@@ -1,25 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+// import './button.scss';
+import { signInWitGoogle } from './Firebase';
+
+const onLogout = () => {
+    localStorage.clear();
+    window.location.reload(false);
+};
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className='App'>
+            <button onClick={signInWitGoogle} className='login-with-google-btn'>
+                Sign In With Google
+            </button>
+            <h1>{localStorage.getItem('name')}</h1>
+            <h1>{localStorage.getItem('email')}</h1>
+            {/* <img src={localStorage.getItem('profilePic')} alt='profile pic' /> */}
+
+            <button onClick={onLogout}>Logout</button>
+        </div>
+    );
 }
 
 export default App;
